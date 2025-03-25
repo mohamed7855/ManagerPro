@@ -1,0 +1,16 @@
+table {
+  overflow-y: auto;
+  width: 100%;
+
+  thead tr {
+    background-color: #d5cccc;
+  }
+  tr:hover {
+    background-color: #d5cccc;
+  }
+}
+
+button:disabled {
+  background-color: #d5cccc;
+  cursor: not-allowed;
+}

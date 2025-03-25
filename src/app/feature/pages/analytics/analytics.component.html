@@ -1,0 +1,60 @@
+<div class="p-5">
+    <h2 class="font-bold mb-3 text-xl">Analytics</h2>
+
+    <div class="grid md:grid-cols-4 gap-x-3 gap-5">
+
+        <app-box class="col-span-4 md:col-span-1">
+            <div class="details flex items-center gap-2">
+                <img src="./Icon_Total_Revenue.png" alt="Icon Total Revenue" class=" rounded-full w-1/4">
+                <div class="details font-semibold">
+                    <h3 class="text-gray-500">Total Revenue</h3>
+                    <span class="text-lg">$52.6k</span>
+                </div>
+            </div>
+        </app-box>
+        <app-box class="col-span-4 md:col-span-1">
+            <div class="details flex items-center gap-2">
+                <img src="./Icon_Today_Revenue.png" alt="Icon Today Revenue" class=" rounded-full w-1/4">
+                <div class="details font-semibold">
+                    <h3 class="text-gray-500">Total Revenue</h3>
+                    <span class="text-lg">$1024</span>
+                </div>
+            </div>
+        </app-box>
+        <app-box class="col-span-4 md:col-span-1">
+            <div class="details flex items-center gap-2">
+                <img src="./Icon_Sales.png" alt="Icon Items Sold" class=" rounded-full w-1/4">
+                <div class="details font-semibold">
+                    <h3 class="text-gray-500">Items Sold</h3>
+                    <span class="text-lg">22</span>
+                </div>
+            </div>
+        </app-box>
+        <app-box class="col-span-4 md:col-span-1">
+            <div class="details flex items-center gap-2">
+                <img src="./Icon_Users.png" alt="Icon User" class=" rounded-full w-1/4">
+                <div class="details font-semibold">
+                    <h3 class="text-gray-500">Users Active</h3>
+                    <span class="text-lg">11</span>
+                </div>
+            </div>
+        </app-box>
+        <app-box class="col-span-4 md:col-span-3">
+            <app-chart class="chart w-3/4 min-h-fit"></app-chart>
+        </app-box>
+        <app-box class="col-span-4 md:col-span-1">
+
+        </app-box>
+
+    </div>
+    <div class="flex justify-between items-center">
+        <h2 class="font-bold my-3 text-xl">Recent Orders</h2>
+        <h3 routerLink="/home/orders" class="text-gray-500 cursor-pointer">Go to Orders Page<i
+                class="fa-solid fa-arrow-right ms-2"></i></h3>
+    </div>
+    <app-box class=" col-span-4">
+        <div class="table">
+            <app-orders></app-orders>
+        </div>
+    </app-box>
+</div>

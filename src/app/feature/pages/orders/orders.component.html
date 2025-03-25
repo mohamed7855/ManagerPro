@@ -1,0 +1,38 @@
+@if (ordersData.length!=0) {
+<div class="bg-white flex flex-col items-center m-4 rounded-xl p-5 ">
+  <!-- <h1>#Orders {{ordersData.results}}</h1> -->
+  <table>
+    <thead>
+      <tr>
+        <th>Total Order Price</th>
+        <th>Date</th>
+        <th>Paid</th>
+        <th>Delivered</th>
+        <th>Payment Type</th>
+        <th>Cart Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of ordersData; track $index) {
+      <tr class="text-center cursor-pointer">
+        <td>{{item.totalOrderPrice | currency:'EGP'}}</td>
+        <td>{{item.createdAt.slice(0,10)}}</td>
+        <td>{{item.isPaid}}</td>
+        <td>{{item.isDelivered}}</td>
+        <td>{{item.paymentMethodType}}</td>
+        <td>{{item.cartItems.length}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div class="flex justify-center gap-3 text-white">
+    <button class="p-2 my-3 bg-blue-600 rounded-xl cursor-pointer" type="button" (click)="loadMoreOrders('1')">Next</button>
+    <button class="p-2 my-3 bg-blue-600 rounded-xl cursor-pointer" type="button" (click)="loadMoreOrders('-1')"
+      [disabled]="pageNum == '1'">Previous</button>
+  </div>
+</div>
+
+
+}@else {
+<h1>No data get yet!</h1>
+}

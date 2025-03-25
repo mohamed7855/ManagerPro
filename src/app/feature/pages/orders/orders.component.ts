@@ -1,0 +1,33 @@
+import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
+import { CurrencyPipe } from '@angular/common';
+import { Order } from '../../interfaces/order';
+
+@Component({
+  selector: 'app-orders',
+  imports: [CurrencyPipe],
+  templateUrl: './orders.component.html',
+  styleUrl: './orders.component.scss',
+})
+export class OrdersComponent implements OnInit {
+  ordersData: Order[] = [];
+  pageNum: string = '0';
+
+  constructor(private _OrdersService: OrdersService) {}
+
+  ngOnInit(): void {
+    this.loadMoreOrders(this.pageNum);
+  }
+
+  loadMoreOrders(change: string) {
+    let newPageNum = Number(this.pageNum) + Number(change);
+    if (newPageNum <= 1) {
+      newPageNum = 1;
+    }
+
+    this._OrdersService.getAllOrders(String(newPageNum)).subscribe((res) => {
+      this.ordersData = res.data;
+      this.pageNum = String(newPageNum);
+    });
+  }
+}

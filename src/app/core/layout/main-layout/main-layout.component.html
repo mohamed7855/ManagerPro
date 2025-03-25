@@ -1,0 +1,60 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav p-5" [mode]="drawerMode" [opened]="opened">
+    <div class="logo text-center  text-2xl font-medium tracking-tight">
+      <i class="fa-solid fa-layer-group"></i>
+      Manager <span class="text-blue-600/100">Pro</span>
+    </div>
+    <ul class="mt-5 text-gray-500">
+      @for (item of sidenavList; track $index) {
+      <li [routerLink]="item.link" routerLinkActive="bg-[#EDF4FF] text-blue-600"
+        class="transition-all duration-300 ease-in-out mb-5 text-lg text-center  flex items-center gap-4 p-3 px-7  font-semibold rounded-lg tracking-tight"
+        [innerHTML]="item.data">
+      </li>
+      }
+    </ul>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <div class="navbar flex flex-wrap justify-between items-center  bg-white p-4">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Search">
+        <mat-icon matPrefix><i class="fa-solid fa-magnifying-glass"></i></mat-icon>
+      </mat-form-field>
+
+
+
+      <div class="flex gap-4 items-center ">
+        <div class="p-2 bg-gray-200 rounded-md w-[40px] h-[40px] flex justify-center items-center">
+          <i class="fa-solid fa-pen-nib text-gray-500 "></i>
+        </div>
+        <div class="p-2 bg-gray-200 rounded-md w-[40px] h-[40px] flex justify-center items-center">
+          <div matBadge="0" matBadgeSize="small" class="demo-section"><i class="fa-solid fa-bell text-gray-500"></i>
+          </div>
+        </div>
+        <div class="p-2 bg-gray-200 rounded-md w-[40px] h-[40px] flex justify-center items-center">
+          <img src="./userProfile.png" alt="user profile photo" class="w-full">
+        </div>
+        <h3 class="font-semibold tracking-tight text-lg">Johny Larsen</h3>
+        <div class="">
+          <i [matMenuTriggerFor]="menu" class="fa-regular fa-square-caret-down text-gray-500"></i>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Sign out</button>
+          </mat-menu>
+        </div>
+        <i (click)="drawer.toggle()" class="fa-solid fa-bars text-gray-500 text-3xl"></i>
+      </div>
+
+
+    </div>
+
+
+
+
+    <router-outlet />
+
+  </div>
+
+</mat-drawer-container>
