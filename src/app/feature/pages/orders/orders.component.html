@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       @for (item of ordersData; track $index) {
-      <tr class="text-center cursor-pointer">
+      <tr class="text-center cursor-pointer" [routerLink]="['/home/order', $index]">
         <td>{{item.totalOrderPrice | currency:'EGP'}}</td>
         <td>{{item.createdAt.slice(0,10)}}</td>
         <td>{{item.isPaid}}</td>
@@ -26,7 +26,8 @@
     </tbody>
   </table>
   <div class="flex justify-center gap-3 text-white">
-    <button class="p-2 my-3 bg-blue-600 rounded-xl cursor-pointer" type="button" (click)="loadMoreOrders('1')">Next</button>
+    <button class="p-2 my-3 bg-blue-600 rounded-xl cursor-pointer" type="button"
+      (click)="loadMoreOrders('1')">Next</button>
     <button class="p-2 my-3 bg-blue-600 rounded-xl cursor-pointer" type="button" (click)="loadMoreOrders('-1')"
       [disabled]="pageNum == '1'">Previous</button>
   </div>

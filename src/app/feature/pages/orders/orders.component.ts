@@ -3,10 +3,11 @@ import { OrdersService } from '../../services/orders.service';
 import { CurrencyPipe } from '@angular/common';
 import { Order } from '../../interfaces/order';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })

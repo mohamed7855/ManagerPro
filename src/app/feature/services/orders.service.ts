@@ -14,13 +14,18 @@ export class OrdersService implements OrdersApi {
     private _AdaptOrderService: AdaptOrderService
   ) {}
 
+  orders: any;
+
   getAllOrders(pageNum: string): Observable<OrderRes> {
     return this._HttpClient
       .get<OrderAPIRes>(
         `https://ecommerce.routemisr.com/api/v1/orders?page=${pageNum}&limit=15`
       )
       .pipe(
-        map((res: OrderAPIRes) => this._AdaptOrderService.adaptAllOrders(res)),
+        map((res: OrderAPIRes) => {
+          this.orders = res;
+          return this._AdaptOrderService.adaptAllOrders(res);
+        }),
         catchError((err) => {
           console.log('Error ');
           return throwError(() => new Error(err?.error?.message || 'Failed'));
